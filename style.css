@@ -1,0 +1,76 @@
+body{
+    background-color: rgb(52, 212, 199);
+}
+
+.Needs {
+    display: flex;
+    align-items: start;
+}
+
+#pettext{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#pet{
+    user-select: none;
+}
+
+img{
+    
+    display: block;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    user-select: none;
+}
+
+#endscreen{
+    display: block;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    user-select: none;
+}
+
+.Buttons{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: lightgrey;
+    user-select: none;
+
+}
+
+#Hunger {
+    margin: 10px;
+    border: solid black 2px;
+    height: 45px;
+    width: 33%;
+    background-color: rgb(175, 24, 24);
+    text-align: center;
+    user-select: none;
+}
+
+#Thirst {
+    margin: 10px;
+    border: solid black 2px;
+    height: 45px;
+    width: 33%;
+    background-color: rgb(39, 143, 204);
+    text-align: center;
+    user-select: none;
+}
+
+#Boredom {
+    margin: 10px;
+    border: solid black 2px;
+    height: 45px;
+    width: 33%;
+    background-color: rgb(45, 201, 24);
+    text-align: center;
+    user-select: none;
+}

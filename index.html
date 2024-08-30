@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notagochi</title>
+
+    <link rel="stylesheet" href="Style.css">
+
+</head>
+
+<body>
+
+    
+    <div id="pet">
+        <img src="IMG/catgreet.png" />
+        <div id="pettext"></div>
+    </div>
+
+    <div class="Needs">
+        <div id="Hunger">
+            <h2>HUNGER</h2>
+            <h1 id="hungerValue">3</h1>
+            <div>
+                <button class="Buttons" type="button" onclick="upgrade('hungerValue'), 
+                addhunger()" >Give Food</button>
+            </div>
+        </div>
+
+        <div id="Thirst">
+            <h2>THIRST</h2>
+            <h1 id="thirstValue">3</h1>
+            <div>
+                <button class="Buttons" type="button" onclick="upgrade('thirstValue'), 
+                addthirst()">Give Water</button>
+            </div>
+        </div>
+
+        <div id="Boredom">
+            <h2>BOREDOM</h2>
+            <h1 id="boredomValue">3</h1>
+            <div>
+                <button class="Buttons" type="button" onclick="upgrade('boredomValue'), 
+                addboredom()">Play With</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        var hunger = 3
+        var thirst = 3
+        var boredom = 3
+
+        let hungerTimer;
+        let thirstTimer;
+        let boredomTimer;
+
+
+        //gameover/moodscript
+        startGame()
+        function checkneeds() {
+            var pet = document.getElementById('pet')
+            if (hunger == 0 || thirst == 0 || boredom == 0) {
+                pet.innerHTML = /*HTML*/`
+             <img id="endscreen" src="IMG/altend.png"/>
+              <div id="pettext">It's not me it's you!</div>`;
+                runGameover()
+            }
+
+            else if (boredom == 5 || thirst == 5 || hunger == 5 &&
+                boredom > 3 && thirst > 3 && hunger > 3) {
+                pet.innerHTML = /*HTML*/`
+             <img src="IMG/catlove.png"/>
+              <div id="pettext">Fun times<3 </div>`;
+            }
+
+            else if (hunger == 2 || hunger == 1) {
+                pet.innerHTML = /*HTML*/`
+            <img src="IMG/cathungry.png"/>
+            <div id="pettext">Kinda hungry...</div>`;
+            }
+
+            else if (thirst == 2 || thirst == 1) {
+                pet.innerHTML = /*HTML*/`
+              <img src="IMG/catsad.png"/>
+               <div id="pettext">Drinking tears ;_;</div>`;
+            }
+
+            else if (boredom == 2 || boredom == 1) {
+                pet.innerHTML = /*HTML*/`
+                  <img src="IMG/catbored.png"/>
+                   <div id="pettext">This is lame</div>`;
+            }
+
+            else if (hunger == 3 || hunger == 4 && 
+            thirst == 3 || thirst == 4 && 
+            boredom ==3 || boredom == 4){
+                pet.innerHTML = /*HTML*/`
+                    <img src="IMG/catgreet.png" />
+                    <div id="pettext"></div>`;
+            }
+            document.getElementById('hungerValue').innerHTML = hunger
+            document.getElementById('thirstValue').innerHTML = thirst
+            document.getElementById('boredomValue').innerHTML = boredom
+            
+        }
+
+        function startGame() {  //her skal timere gå, når de et intervall når 0 trigges updateResource
+            hungerTimer = setInterval( () => {updateResource('hunger')}, 15000)
+            thirstTimer = setInterval( () => {updateResource('thirst')}, 5000)
+            boredomTimer = setInterval( () => {updateResource('boredom')}, 10000)
+
+
+
+        }
+
+        function updateResource(resource) { //reduserer ressurser basert på timere. Kaller inn variabel og sjekker navn og verdien er høyere en 0 (game over). Kan splittes i individuelle funksjoner i stedet?
+            if (resource == 'hunger' && hunger > 0) {
+                hunger--;
+
+            }
+            else if (resource == 'thirst' && thirst > 0) {
+                thirst--;
+            }
+            else if (resource == 'boredom' && boredom > 0) {
+                boredom--;
+            }
+            //updateUI()
+            checkneeds()
+        }
+
+
+        function updateUI() { //denne oppdaterer barene, gjør sammen?
+
+        }
+
+        function userInput(update) { //kjører når riktig knapp trykkes, det antas at riktig variabel sendes fra knapp som parameter
+            if (update == 'hunger' && hunger > 5) {
+                hunger++;
+
+            }
+            else if (update == 'thirst' && thirst > 5) {
+                thirst++;
+            }
+            else if (update == 'boredom' && boredom > 5) {
+                boredom++;
+            }
+        }
+
+
+        function runGameover() { //kjøres hvis checkGameOver leser 0 
+            clearInterval(hungerTimer, thirstTimer, boredomTimer);
+        }
+
+
+        // knapper
+        function upgrade(id) {
+            let element = document.getElementById(id);
+            let value = +element.textContent;
+            if (value + 1 <= 5)
+                element.textContent = value + 1;
+        }
+
+
+        //  forslag til knapper som øker variabel
+
+         function addhunger(){
+             if (hunger > 0 && hunger < 5){
+             hunger ++
+             }
+         checkneeds()
+         }
+
+         function addthirst(){
+             if (thirst > 0 && thirst < 5){
+             thirst ++
+             }
+         checkneeds()
+         }
+
+         function addboredom(){
+             if (boredom > 0 && boredom < 5){
+             boredom ++
+             }
+         checkneeds()
+         }
+
+        
+    </script>
+</body>
+
+</html>
