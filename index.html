@@ -64,7 +64,7 @@
             var pet = document.getElementById('pet')
             if (hunger == 0 || thirst == 0 || boredom == 0) {
                 pet.innerHTML = /*HTML*/`
-             <img id="endscreen" src="IMG/altend.png"/>
+             <img id="endscreen" src="img/altend.png"/>
               <div id="pettext">It's not me it's you!</div>`;
                 runGameover()
             }
@@ -72,25 +72,25 @@
             else if (boredom == 5 || thirst == 5 || hunger == 5 &&
                 boredom > 3 && thirst > 3 && hunger > 3) {
                 pet.innerHTML = /*HTML*/`
-             <img src="IMG/catlove.png"/>
+             <img src="img/catlove.png"/>
               <div id="pettext">Fun times<3 </div>`;
             }
 
             else if (hunger == 2 || hunger == 1) {
                 pet.innerHTML = /*HTML*/`
-            <img src="IMG/cathungry.png"/>
+            <img src="img/cathungry.png"/>
             <div id="pettext">Kinda hungry...</div>`;
             }
 
             else if (thirst == 2 || thirst == 1) {
                 pet.innerHTML = /*HTML*/`
-              <img src="IMG/catsad.png"/>
+              <img src="img/catsad.png"/>
                <div id="pettext">Drinking tears ;_;</div>`;
             }
 
             else if (boredom == 2 || boredom == 1) {
                 pet.innerHTML = /*HTML*/`
-                  <img src="IMG/catbored.png"/>
+                  <img src="img/catbored.png"/>
                    <div id="pettext">This is lame</div>`;
             }
 
@@ -98,7 +98,7 @@
             thirst == 3 || thirst == 4 && 
             boredom ==3 || boredom == 4){
                 pet.innerHTML = /*HTML*/`
-                    <img src="IMG/catgreet.png" />
+                    <img src="img/catgreet.png" />
                     <div id="pettext"></div>`;
             }
             document.getElementById('hungerValue').innerHTML = hunger
